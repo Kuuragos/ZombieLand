@@ -7,22 +7,43 @@ public class NpcTerreno : MonoBehaviour
     public GameObject[] cubos;
     void Start()
     {
-        cubos = new GameObject[10];
-        for (int i = 0; i < 10; i++)
+        int Mob=Random.Range(2,6);
+        int Zombie = Random.Range(3, 6);
+        for (int i = 0; i < Mob; i++)
         {
-            GameObject go = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            GameObject Npc = GameObject.CreatePrimitive(PrimitiveType.Cube);
             Vector3 v = new Vector3();
             v.x = Random.Range(5, 30);
             v.z = Random.Range(5, 30);
-            go.transform.position = v;
-            go.name = i.ToString();
-            
-            cubos[i] = go;
+            Npc.transform.position = v;
+            Npc.name = i.ToString();
         }
 
-        void Update()
+        for (int i = 0; i < Zombie; i++)
         {
+            int color = Random.Range(1, 4);
+            GameObject Mobs = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            Vector3 v = new Vector3();
+            v.x = Random.Range(5, 30);
+            v.z = Random.Range(5, 30);
+            Mobs.transform.position = v;
 
+            switch(color)
+            {
+                case 1:
+                    Mobs.GetComponent<Renderer>().material.color = Color.cyan;
+                    break;
+                case 2:
+                    Mobs.GetComponent<Renderer>().material.color = Color.green;
+                    break;
+                case 3:
+                    Mobs.GetComponent<Renderer>().material.color = Color.magenta;
+                    break;
+            }
         }
+    }
+    void Update()
+    {
+
     }
 }
