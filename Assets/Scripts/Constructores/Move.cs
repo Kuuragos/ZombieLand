@@ -35,7 +35,6 @@ public class Move : MonoBehaviour
         {
             canJump = false;
             mover.AddForce(0, 5, 0, ForceMode.Impulse);
-
         }
 
     }
@@ -111,9 +110,6 @@ public class Move : MonoBehaviour
     }
     public class Citizen
     {
-        string nombre;
-        int edad;
-        
         public Citizen()
         {
             GameObject Mobs = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -127,8 +123,8 @@ public class Move : MonoBehaviour
         string Nombre()
         {
             string[] names = new string[20];
-            int it = Random.Range(0, 20);
-            int to = Random.Range(15, 101);
+            int nom = Random.Range(0, 20);
+            int age = Random.Range(15, 101);
             names[0] = "Aydan";
             names[1] = "Chindler";
             names[2] = "Tann";
@@ -149,7 +145,7 @@ public class Move : MonoBehaviour
             names[17] = "Belenne";
             names[18] = "Aebby";
             names[19] = "Allany";
-            return "hola soy " + names[it] + " y tengo " + to + " años";
+            return "hola soy " + names[nom] + " y tengo " + age + " años";
         }
     }
 }
