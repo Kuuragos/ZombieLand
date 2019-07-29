@@ -7,14 +7,14 @@ public class Move : MonoBehaviour
     //aca se declararon las variables que se van a utilizar
     float speed = 2.5f;
     float eje_X;
-    private Rigidbody mover;
-    private bool canJump;
+    public float force;
+    public bool canJump = false;
 
     void Start()
     {
         //aca el random range se usa para la cantidad de npcs de la escena y el For es el que lo controla e invoca al constructor
         int n= Random.Range(4, 10);
-        mover = GetComponent<Rigidbody>();
+        
         for (int i = 0; i < n; i++)
         {
             int s = Random.Range(0, 2);
@@ -30,18 +30,14 @@ public class Move : MonoBehaviour
         }
         
     }
-
-    private void FixedUpdate()
+    
+    void Jump()
     {
-        //este if se usa para que el heroe pueda saltar
         if (canJump)
         {
-            canJump = false;
-            mover.AddForce(0, 5, 0, ForceMode.Impulse);
-        }
-
+            this.GetComponent<Rigidbody>().AddForce(Vector3.up * force);
+                }
     }
-
     void Update()
     {
         //Este bloque de IF se usa para el movimiento del heroe
@@ -63,10 +59,7 @@ public class Move : MonoBehaviour
         {
             transform.position += transform.forward * speed * Time.deltaTime;
         }
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            canJump = true;
-        }
+        
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             speed = 2.5f;
@@ -74,10 +67,15 @@ public class Move : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            speed = 5f;
+            speed = 5;
             
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Jump();
+            canJump = false;
 
+        }
         transform.eulerAngles = new Vector3(0, eje_X, 0);
 
     }
@@ -165,6 +163,13 @@ public class Move : MonoBehaviour
             names[18] = "Aebby";
             names[19] = "Allany";
             return "hola soy " + names[nom] + " y tengo " + age + " años";
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.name=="Terrain")
+        {
+            canJump = true;
         }
     }
 }
