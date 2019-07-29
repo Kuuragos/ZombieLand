@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    float speed = 5;
+    //aca se declararon las variables que se van a utilizar
+    float speed = 2.5f;
     float eje_X;
     private Rigidbody mover;
     private bool canJump;
 
     void Start()
     {
+        //aca el random range se usa para la cantidad de npcs de la escena y el For es el que lo controla e invoca al constructor
         int n= Random.Range(4, 10);
         mover = GetComponent<Rigidbody>();
         for (int i = 0; i < n; i++)
@@ -31,6 +33,7 @@ public class Move : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //este if se usa para que el heroe pueda saltar
         if (canJump)
         {
             canJump = false;
@@ -41,6 +44,7 @@ public class Move : MonoBehaviour
 
     void Update()
     {
+        //Este bloque de IF se usa para el movimiento del heroe
         eje_X += Input.GetAxis("Mouse X");
 
         if (Input.GetKey(KeyCode.A))
@@ -63,11 +67,17 @@ public class Move : MonoBehaviour
         {
             canJump = true;
         }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            speed = speed * 2;
+            Debug.Log(speed);
+        }
         transform.eulerAngles = new Vector3(0, eje_X, 0);
 
     }
     public class Zombie
     {
+        //este es el constructor de los zombies
          string nombre;
          int cerebros;
          int golpe;
@@ -103,6 +113,7 @@ public class Move : MonoBehaviour
             Debug.Log(soyZ(colorFinal));
 
         }
+        //aqui se retorna el color de los zombies a la funcion debug.log
         string soyZ(string color)
         {
             return "Soy un zombie de color " + color;
@@ -110,6 +121,7 @@ public class Move : MonoBehaviour
     }
     public class Citizen
     {
+        //este es el constructor de los ciudadanos
         public Citizen()
         {
             GameObject Mobs = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -122,6 +134,7 @@ public class Move : MonoBehaviour
         }
         string Nombre()
         {
+            //esta matriz se usa para asignar a cada ciudadano su nombre y edad mediante un random range
             string[] names = new string[20];
             int nom = Random.Range(0, 20);
             int age = Random.Range(15, 101);

@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class MoveCamera : MonoBehaviour
 {
+    // se declararon las variables y el bool a usar
     float mouseX;
     float mouseY;
     public bool inversionMouse;
 
     void Update()
     {
+        // aca se registra el movimiento del mouse en x & y
         Vector3 mousePosition = Input.mousePosition;
         mouseX += Input.GetAxis("Mouse X");
         if (inversionMouse)
