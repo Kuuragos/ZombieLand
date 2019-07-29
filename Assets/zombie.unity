@@ -123,7 +123,6 @@ GameObject:
   - component: {fileID: 458074844}
   - component: {fileID: 458074843}
   - component: {fileID: 458074842}
-  - component: {fileID: 458074845}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Untagged
@@ -192,19 +191,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &458074845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 458074841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48e4f0e6ec3ede44782609343141bca5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cubos: []
 --- !u!1 &1029955533
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,3 +478,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 378e1c5ea99a0bd45b82942fed39ab31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  force: 200
+  canJump: 0
