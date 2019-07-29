@@ -69,9 +69,15 @@ public class Move : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
-            speed = speed * 2;
-            Debug.Log(speed);
+            speed = 2.5f;
+           
         }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            speed = 5f;
+            
+        }
+
         transform.eulerAngles = new Vector3(0, eje_X, 0);
 
     }
