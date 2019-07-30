@@ -7,7 +7,7 @@ public class Move : MonoBehaviour
     //aca se declararon las variables que se van a utilizar
     float speed = 2.5f;
     float eje_X;
-    public float force;
+    public float force = 250f;
     public bool canJump = false;
 
     void Start()
@@ -33,6 +33,7 @@ public class Move : MonoBehaviour
     
     void Jump()
     {
+        //verifica el rigidbody y aplica la fuerza gravitatoria
         if (canJump)
         {
             this.GetComponent<Rigidbody>().AddForce(Vector3.up * force);
@@ -167,6 +168,7 @@ public class Move : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
+        // comprueba si hay una colision con el terreno para permitir al Heroe saltar
         if (collision.transform.name=="Terrain")
         {
             canJump = true;
